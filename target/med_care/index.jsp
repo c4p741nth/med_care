@@ -63,11 +63,13 @@
               </div>
               <div class="quote_btn-container">
                 <a href="">
+                   <!-- <i class="fa fa-sign-in" aria-hidden="true"></i> -->
                   <span>
                     Login
                   </span>
                 </a>
-                <a href="">  
+                <a href="">
+                  <!-- <i class="fa fa-user-plus" aria-hidden="true"></i> -->
                   <span>
                     Sign Up
                   </span>
