@@ -1,3 +1,6 @@
+<%@ page language = "java" contentType = "text/html; charset=UTF-8" pageEncoding = "UTF-8"%>
+<%@ page import="th.ac.kku.*,java.util.ArrayList" %>
+
 <!DOCTYPE html>
 <html>
 
@@ -39,7 +42,7 @@
 
 <body>
 
-  <div class="hero_area">
+  
     <!-- header section strats -->
     <header class="header_section">
       <div class="header_bottom">
@@ -62,12 +65,12 @@
                 </ul>
               </div>
               <div class="quote_btn-container">
-                <a href="">
+                <a href="login-user.jsp">
                   <span>
                     Login
                   </span>
                 </a>
-                <a href="">  
+                <a href="sigup-user.jsp">  
                   <span>
                     Sign Up
                   </span>
@@ -93,84 +96,27 @@
                   <div class="detail-box">
                   
                     <h1>
-                      Mico <br>
+                      MED <br>
                       <span>
-                        Hospital
+                        CARE
                       </span>
                     </h1>
                     <p>
-                      when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to
+                     โปรดบอกฉันว่าโลกนี้มันยังไม่เลวร้ายเกินไป และพรุ่งนี้โลกใบนี้มันยังไม่แตกสลายไป ขอให้เธอใจดีกับฉัน ในวันที่โลกทั้งใบใจร้าย
                     </p>
-                    <a href="">
-                      Contact Us
-                    </a>
-                  </div>
-                </div>
-                <div class="col-md-6">
-                  <div class="img-box">
-                    <img src="images/slider-img.jpg" alt="">
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="carousel-item">
-            <div class="container ">
-              <div class="row">
-                <div class="col-md-6">
-                  <div class="detail-box">
+                    <h3>นักบอลอะไรติดยา ?</h3>
+                    <P>ลิโอเนล เม็ดซิ</P>
                    
-                    <h1>
-                      Mico <br>
-                      <span>
-                        Hospital
-                      </span>
-                    </h1>
-                    <p>
-                      when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to
-                    </p>
-                    <a href="">
-                      Contact Us
-                    </a>
                   </div>
                 </div>
                 <div class="col-md-6">
                   <div class="img-box">
-                    <img src="images/slider-img.jpg" alt="">
+                    <img src="images/03.jpg" alt="">
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          <div class="carousel-item">
-            <div class="container ">
-              <div class="row">
-                <div class="col-md-6">
-                  <div class="detail-box">
-                    
-                    </div>
-                    <h1>
-                      Mico <br>
-                      <span>
-                        Hospital
-                      </span>
-                    </h1>
-                    <p>
-                      when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to
-                    </p>
-                    
-                  </div>
-                </div>
-                <div class="col-md-6">
-                  <div class="img-box">
-                    <img src="images/slider-img.jpg" alt="">
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-       
       </div>
 
     </section>
@@ -184,29 +130,26 @@
       <div class="row">
         <div class="col-md-6 ">
           <div class="img-box">
-            <img src="images/about-img.jpg" alt="">
+            <img src="images/01.jpg" alt="">
           </div>
         </div>
         <div class="col-md-6">
           <div class="detail-box">
             <div class="heading_container">
               <h2>
-                About <span>Hospital</span>
+                About <span>MedCare</span>
               </h2>
             </div>
             <p>
-              has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors
+             “ธรรมะแท้ไม่มีคำปลอบใจ มีแต่ความจริงซึ่งคนโง่ยอมรับไม่ได้” <br>
+             <h6>โดย อาจารย์แดง</h6>
             </p>
-            <a href="">
-              Read More
-            </a>
+            
           </div>
         </div>
       </div>
     </div>
   </section>
-
-  <!-- end about section -->
 
 
 
