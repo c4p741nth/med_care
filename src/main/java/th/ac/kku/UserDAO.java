@@ -25,6 +25,7 @@ public class UserDAO {
         while (resultSet.next()) {
             User user = new User();
             user.setID(resultSet.getInt("id"));
+            user.setCitizenID(resultSet.getString("citizen_id"));
             user.setFirstname(resultSet.getString("firstname"));
             user.setLastname(resultSet.getString("lastname"));
             user.setGender(resultSet.getInt("gender"));
@@ -56,6 +57,7 @@ public class UserDAO {
         if (resultSet.next()) {
             User user = new User();
             user.setID(resultSet.getInt("id"));
+            user.setCitizenID(resultSet.getString("citizen_id"));
             user.setFirstname(resultSet.getString("firstname"));
             user.setLastname(resultSet.getString("lastname"));
             user.setGender(resultSet.getInt("gender"));
@@ -82,22 +84,24 @@ public class UserDAO {
     // Register a new member
     public void registerUser(User user) throws SQLException {
         PreparedStatement pStatement = connection
-                .prepareStatement("INSERT INTO users VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+                .prepareStatement("INSERT INTO users VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
         pStatement.setInt(1, user.getID());
-        pStatement.setString(2, user.getFirstname());
-        pStatement.setString(3, user.getLastname());
-        pStatement.setInt(4, user.getGender());
-        pStatement.setDate(5, user.getBirthDate());
-        pStatement.setString(6, user.getAddress());
-        pStatement.setString(7, user.getMobile());
-        pStatement.setString(8, user.getEmail());
-        pStatement.setString(9, user.getPassword());
-        pStatement.setString(10, user.getAllergic());
-        pStatement.setString(11, user.getBlood_group());
-        pStatement.setDouble(12, user.getWeight());
-        pStatement.setDouble(13, user.getHeight());
-        pStatement.setString(14, user.getChronic_disease());
-        pStatement.setInt(15, user.getAccessLevel());
+        pStatement.setString(2, user.getCitizenID());
+        pStatement.setString(3, user.getFirstname());
+        pStatement.setString(4, user.getLastname());
+        pStatement.setInt(5, user.getGender());
+        pStatement.setDate(6, user.getBirthDate());
+        pStatement.setString(7, user.getAddress());
+        pStatement.setString(8, user.getMobile());
+        pStatement.setString(9, user.getEmail());
+        pStatement.setString(10, user.getPassword());
+        pStatement.setString(11, user.getAllergic());
+        pStatement.setString(12, user.getBlood_group());
+        pStatement.setDouble(13, user.getWeight());
+        pStatement.setDouble(14, user.getHeight());
+        pStatement.setString(15, user.getChronic_disease());
+        pStatement.setInt(16, user.getAccessLevel());
+        pStatement.executeUpdate();
     }
 
     // Login method
@@ -112,6 +116,7 @@ public class UserDAO {
             if (resultSet.next()) {
                 User user = new User();
                 user.setID(resultSet.getInt("id"));
+                user.setCitizenID(resultSet.getString("citizen_id"));
                 user.setFirstname(resultSet.getString("firstname"));
                 user.setLastname(resultSet.getString("lastname"));
                 user.setGender(resultSet.getInt("gender"));
@@ -153,7 +158,7 @@ public class UserDAO {
 
                 if (accessLevel == 1) {
                     // Admin with access level 1 can edit all user profile fields
-                    sqlQuery = "UPDATE users SET firstname=?, lastname=?, gender=?, birthdate=?, address=?, mobile=?, email=?, password=?, allergic=?, blood_group=?, weight=?, height=?, chronic_disease=?, access_level=? WHERE id=?";
+                    sqlQuery = "UPDATE users SET citizen_id=?, firstname=?, lastname=?, gender=?, birthdate=?, address=?, mobile=?, email=?, password=?, allergic=?, blood_group=?, weight=?, height=?, chronic_disease=?, access_level=? WHERE id=?";
                 } else if (accessLevel == 0) {
                     // Admin with access level 0 can only edit specific fields
                     sqlQuery = "UPDATE users SET address=?, mobile=?, email=?, password=?, allergic=?, blood_group=?, weight=?, height=?, chronic_disease=? WHERE id=?";
@@ -165,21 +170,22 @@ public class UserDAO {
 
                 // Prepare and execute the SQL update query
                 PreparedStatement pStatement = connection.prepareStatement(sqlQuery);
-                pStatement.setString(1, updatedUser.getFirstname());
-                pStatement.setString(2, updatedUser.getLastname());
-                pStatement.setInt(3, updatedUser.getGender());
-                pStatement.setDate(4, updatedUser.getBirthDate());
-                pStatement.setString(5, updatedUser.getAddress());
-                pStatement.setString(6, updatedUser.getMobile());
-                pStatement.setString(7, updatedUser.getEmail());
-                pStatement.setString(8, updatedUser.getPassword());
-                pStatement.setString(9, updatedUser.getAllergic());
-                pStatement.setString(10, updatedUser.getBlood_group());
-                pStatement.setDouble(11, updatedUser.getWeight());
-                pStatement.setDouble(12, updatedUser.getHeight());
-                pStatement.setString(13, updatedUser.getChronic_disease());
-                pStatement.setInt(14, updatedUser.getAccessLevel());
-                pStatement.setInt(15, id);
+                pStatement.setString(1, updatedUser.getCitizenID());
+                pStatement.setString(2, updatedUser.getFirstname());
+                pStatement.setString(3, updatedUser.getLastname());
+                pStatement.setInt(4, updatedUser.getGender());
+                pStatement.setDate(5, updatedUser.getBirthDate());
+                pStatement.setString(6, updatedUser.getAddress());
+                pStatement.setString(7, updatedUser.getMobile());
+                pStatement.setString(8, updatedUser.getEmail());
+                pStatement.setString(9, updatedUser.getPassword());
+                pStatement.setString(10, updatedUser.getAllergic());
+                pStatement.setString(11, updatedUser.getBlood_group());
+                pStatement.setDouble(12, updatedUser.getWeight());
+                pStatement.setDouble(13, updatedUser.getHeight());
+                pStatement.setString(14, updatedUser.getChronic_disease());
+                pStatement.setInt(15, updatedUser.getAccessLevel());
+                pStatement.setInt(16, id);
 
                 pStatement.executeUpdate();
             } else {
