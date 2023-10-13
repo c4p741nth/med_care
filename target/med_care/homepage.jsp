@@ -5,7 +5,7 @@
     User loggedInUser = (User) session.getAttribute("loggedInUser");
     if (loggedInUser == null) {
         // If the user is not logged in, redirect back to the login page
-        response.sendRedirect("login-user.jsp");
+        response.sendRedirect("login.jsp");
     } else {
         // If the user is logged in, display the homepage
 %>
@@ -20,7 +20,7 @@
 <body>
     <div class="container">
         <div class="inner-container">
-            <!-- Your homepage content here -->
+            This is homepage!
         </div>
     </div>
 </body>

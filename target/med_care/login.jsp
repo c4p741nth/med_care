@@ -119,17 +119,18 @@
                 </a>
     
                 <!-- Display error message here if login fails -->
-                <%
-                    String email = request.getParameter("email");
-                    String password = request.getParameter("password");
-    
-                    // Create an instance of UserDAO
-                    UserDAO userDAO = new UserDAO();
-                    User user = userDAO.login(email, password);
-    
-                    if (user == null) {
-                        out.println("<p class=\"error\">Invalid email or password. Please try again.</p>");
-                    }
+                <% 
+                    String loginError = (String) session.getAttribute("loginError");
+                    if (loginError != null) { 
+                %>
+                <div class="error-message">
+                    <script type="text/javascript">
+                        alert('<%= loginError %>');
+                    </script>
+                </div>
+                <% 
+                    } 
+                    session.removeAttribute("loginError"); // Clear the login error after displaying it 
                 %>
     
             </form>
