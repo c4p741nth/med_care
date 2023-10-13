@@ -20,7 +20,7 @@
     } else {
         // If the login fails, set an error message and redirect back to the login page
         session.setAttribute("loginError", "Invalid email or password. Please try again.");
-        response.sendRedirect("login.jsp");
+        response.sendRedirect("login-user.jsp");
     }
 
     // Close the database connection
