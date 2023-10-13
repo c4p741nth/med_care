@@ -65,12 +65,12 @@
                 </ul>
               </div>
               <div class="quote_btn-container">
-                <a href="login-user.jsp">
+                <a href="login.jsp">
                   <span>
                     Login
                   </span>
                 </a>
-                <a href="sigup-user.jsp">  
+                <a href="sigup.jsp">  
                   <span>
                     Sign Up
                   </span>
