@@ -7,13 +7,13 @@
         // If the user is already logged in, redirect to the homepage
         response.sendRedirect("homepage.jsp");
     } else {
-        // If the user is not logged in, display the login form
 %>
 <!DOCTYPE html>
 <html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
+        /* Include your CSS styles here */
         body {
             font-family: Arial, Helvetica, sans-serif;
             margin: 0;
@@ -128,7 +128,11 @@
                     User user = userDAO.login(email, password);
     
                     if (user == null) {
-                        out.println("<p class=\"error\">Invalid email or password. Please try again.</p>");
+                %>
+                <script>
+                    alert("Invalid email or password. Please try again.");
+                </script>
+                <%
                     }
                 %>
     
