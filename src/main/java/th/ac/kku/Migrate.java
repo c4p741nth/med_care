@@ -17,19 +17,19 @@ public class Migrate {
             connection = DriverManager.getConnection(jdbcUrl, username, password);
             Statement statement = connection.createStatement();
 
-            String createTableSQL = "CREATE TABLE members (" +
+            String createTableSQL = "CREATE TABLE users (" +
                     "id SERIAL PRIMARY KEY," +
-                    "citizen_id VARCHAR(20) NOT NULL," +
+                    "citizen_id VARCHAR(13) NOT NULL," +
                     "firstname VARCHAR(50) NOT NULL," +
                     "lastname VARCHAR(50) NOT NULL," +
                     "gender INT NOT NULL," +
                     "birth_date DATE NOT NULL," +
                     "address VARCHAR(255)," +
-                    "mobile VARCHAR(15)," +
+                    "mobile VARCHAR(10)," +
                     "email VARCHAR(100)," +
                     "password VARCHAR(100)," +
                     "allergic VARCHAR(255)," +
-                    "blood_group VARCHAR(10)," +
+                    "blood_group VARCHAR(2)," +
                     "weight DOUBLE PRECISION," +
                     "height DOUBLE PRECISION," +
                     "chronic_disease VARCHAR(255)," +
@@ -41,10 +41,10 @@ public class Migrate {
             statement.close();
             connection.close();
 
-            System.out.println("The 'members' table has been created successfully.");
+            System.out.println("The 'users' table has been created successfully.");
         } catch (Exception e) {
             e.printStackTrace();
-            System.err.println("Error creating 'members' table: " + e.getMessage());
+            System.err.println("Error creating 'users' table: " + e.getMessage());
         }
     }
 }

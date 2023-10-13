@@ -100,7 +100,7 @@
 </head>
 <body>
 
-<form action="/action_page.php" style="border:1px solid #ccc">
+<form action="signup_action.jsp" style="border:1px solid #ccc">
     <div class="imgcontainer">
         <img src="images/04.jpg" alt="Avatar" class="avatar">
     </div>
@@ -110,32 +110,50 @@
         <p>Please fill in this form to create an account.</p>
         <hr>
 
+        <label for="citizen_id"><b>Citizen ID</b></label>
+        <input type="text" placeholder="Enter Citizen ID" name="citizen_id" required>
+
+        <label for="firstname"><b>First Name</b></label>
+        <input type="text" placeholder="Enter Firstname" name="firstname" required>
+
+        <label for="lastname"><b>Last Name</b></label>
+        <input type="text" placeholder="Enter Lastname" name="lastname" required>
+
+        <label for="gender"><b>Gender</b></label>
+        <select name="gender" required>
+            <option value="0">Male</option>
+            <option value="1">Female</option>
+        </select>
+
+        <label for="birthdate"><b>Birth Date</b></label>
+        <input type="date" name="birthdate" required>
+
+        <label for="address"><b>Address</b></label>
+        <input type="text" placeholder="Enter Address" name="address" required>
+
+        <label for="mobile"><b>Mobile</b></label>
+        <input type="text" placeholder="Enter Mobile" name="mobile" required>
+
         <label for="email"><b>Email</b></label>
         <input type="text" placeholder="Enter Email" name="email" required>
 
-        <label for="psw"><b>Password</b></label>
-        <input type="password" placeholder="Enter Password" name="psw" required>
+        <label for="password"><b>Password</b></label>
+        <input type="password" placeholder="Enter Password" name="password" required>
 
-        <label for="psw-repeat"><b>Repeat Password</b></label>
-        <input type="password" placeholder="Repeat Password" name="psw-repeat" required>
+        <label for="password_confirm"><b>Confirm Password</b></label>
+        <input type="password" placeholder="Confirm Password" name="password_confirm" required>
 
-        <label>
-            <input type="checkbox" checked="checked" name="remember" style="margin-bottom: 15px;"> Remember me
-        </label>
-
-      
+        <input type="hidden" name="accessLevel" value="1">
 
         <div class="clearfix">
              <a href="index.jsp">
             <button type="button" class="cancelbtn">Cancel</button>
             </a>
-            <a href="">
-                <button type="submit" class="signupbtn">Sign Up</button>
-            </a>
-            
+            <button type="submit" class="signupbtn">Sign Up</button>
         </div>
     </div>
 </form>
+
 
 </body>
 </html>

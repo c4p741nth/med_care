@@ -2,7 +2,7 @@ package th.ac.kku;
 
 import java.sql.Date;
 
-public class Member {
+public class User {
     private int id;
     private String citizen_id;
     private String firstname;

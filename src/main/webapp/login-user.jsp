@@ -86,33 +86,47 @@
 </head>
 <body>
 
-<div class="container">
-    <div class="inner-container">
-        <h2 style="text-align: center;">Login Form</h2>
-        <form action="/action_page.php" method="post">
-            <div class="imgcontainer">
-                <img src="images/05.jpg" alt="Avatar" class="avatar">
-            </div>
-
-            <label for="uname"><b>Username</b></label>
-            <input type="text" placeholder="Enter Username" name="uname" required>
-
-            <label for="psw"><b>Password</b></label>
-            <input type="password" placeholder="Enter Password" name="psw" required>
-
-            <button type="submit">Login</button>
-
-            <label>
-                <input type="checkbox" checked="checked" name="remember"> Remember me
-            </label>
-
-            <a href="homepage.jsp">
-            <button type="button" class="cancelbtn">Cancel</button>
-            </a>
-
-        </form>
+    <div class="container">
+        <div class="inner-container">
+            <h2 style="text-align: center;">Login Form</h2>
+            <form action="login_action.jsp" method="post">
+                <div class="imgcontainer">
+                    <img src="images/05.jpg" alt="Avatar" class="avatar">
+                </div>
+    
+                <label for="email"><b>Email</b></label>
+                <input type="text" placeholder="Enter Email" name="email" required>
+    
+                <label for="password"><b>Password</b></label>
+                <input type="password" placeholder="Enter Password" name="password" required>
+    
+                <button type="submit">Login</button>
+    
+                <label>
+                    <input type="checkbox" checked="checked" name="remember"> Remember me
+                </label>
+    
+                <a href="homepage.jsp">
+                    <button type="button" class="cancelbtn">Cancel</button>
+                </a>
+    
+                <!-- Display error message here if login fails -->
+                <%
+                    String email = request.getParameter("email");
+                    String password = request.getParameter("password");
+    
+                    // Create an instance of UserDAO
+                    UserDAO userDAO = new UserDAO();
+                    User user = userDAO.login(email, password);
+    
+                    if (user == null) {
+                        out.println("<p class=\"error\">Invalid email or password. Please try again.</p>");
+                    }
+                %>
+    
+            </form>
+        </div>
     </div>
-</div>
 
 </body>
 </html>
