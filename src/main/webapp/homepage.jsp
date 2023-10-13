@@ -20,7 +20,7 @@
 <body>
     <div class="container">
         <div class="inner-container">
-            <!-- Your homepage content here -->
+            This is homepage!
         </div>
     </div>
 </body>
