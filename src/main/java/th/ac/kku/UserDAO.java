@@ -107,32 +107,21 @@ public class UserDAO {
     // Login method
     public User login(String email, String password) {
         try {
-            PreparedStatement pStatement = connection
-                    .prepareStatement("SELECT * FROM users WHERE email = ? AND password = ?");
+            PreparedStatement pStatement = connection.prepareStatement("SELECT * FROM users WHERE email = ?");
             pStatement.setString(1, email);
-            pStatement.setString(2, password);
             ResultSet resultSet = pStatement.executeQuery();
 
             if (resultSet.next()) {
+                // Verify password here
+                String storedPassword = resultSet.getString("password");
+                if (!storedPassword.equals(password)) {
+                    return null; // Passwords don't match
+                }
+
+                // Populate the user object
                 User user = new User();
                 user.setID(resultSet.getInt("id"));
-                user.setCitizenID(resultSet.getString("citizen_id"));
-                user.setFirstname(resultSet.getString("firstname"));
-                user.setLastname(resultSet.getString("lastname"));
-                user.setGender(resultSet.getInt("gender"));
-                user.setBirthDate(resultSet.getDate("birthdate"));
-                user.setAddress(resultSet.getString("address"));
-                user.setMobile(resultSet.getString("mobile"));
-                user.setEmail(resultSet.getString("email"));
-                user.setPassword(resultSet.getString("password"));
-
-                user.setAllergic(resultSet.getString("allergic"));
-                user.setBlood_group(resultSet.getString("blood_group"));
-                user.setWeight(resultSet.getDouble("weight"));
-                user.setHeight(resultSet.getDouble("height"));
-                user.setChronic_disease(resultSet.getString("chronic_disease"));
-
-                user.setAccessLevel(resultSet.getInt("access_level"));
+                // Set other user properties
 
                 return user;
             } else {
