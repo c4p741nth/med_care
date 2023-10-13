@@ -5,5 +5,5 @@
     session.invalidate();
 
     // Redirect the user to the login page after logging out
-    response.sendRedirect("login-user.jsp");
+    response.sendRedirect("login.jsp");
 %>
