@@ -122,12 +122,12 @@
                 <%
                     String email = request.getParameter("email");
                     String password = request.getParameter("password");
-    
+            
                     // Create an instance of UserDAO
                     UserDAO userDAO = new UserDAO();
                     User user = userDAO.login(email, password);
-    
-                    if (user == null) {
+            
+                    if (email != null && password != null && user == null) {{
                 %>
                 <script>
                     alert("Invalid email or password. Please try again.");
