@@ -25,6 +25,9 @@
     <p>Height: <%= loggedInUser.getHeight() %> cm</p>
     <p>Chronic Disease: <%= loggedInUser.getChronic_disease() %></p>
     <!-- You can display more user information as needed -->
+    <a href="homepage.jsp">
+          Back
+      </a>
     <%
         } else {
             // If the user is not logged in, redirect back to the login page
