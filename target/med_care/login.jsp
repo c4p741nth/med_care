@@ -114,7 +114,7 @@
                     <input type="checkbox" checked="checked" name="remember"> Remember me
                 </label>
     
-                <a href="homepage.jsp">
+                <a href="index.jsp">
                     <button type="button" class="cancelbtn">Cancel</button>
                 </a>
     
