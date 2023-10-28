@@ -1,8 +1,20 @@
 <%@ page language = "java" contentType = "text/html; charset=UTF-8" pageEncoding = "UTF-8"%>
 <%@ page import="th.ac.kku.*,java.util.ArrayList" %>
 
+<%
+    // Check if the user is already logged in
+    User loggedInUser = (User) session.getAttribute("loggedInUser");
+      String part = request.getParameter("part");
+    if (loggedInUser != null) {
+        // If the user is already logged in, redirect to the homepage
+        response.sendRedirect("login.jsp");
+    } else {
+        // If the user is not logged in, display the login form
+%>
+
 <!DOCTYPE html>
 <html>
+
 
 <head>
   <!-- Basic -->
@@ -158,3 +170,7 @@
 </body>
 
 </html>
+
+<%
+    }
+%>
