@@ -1,6 +1,5 @@
 <%@ page language = "java" contentType = "text/html; charset=UTF-8" pageEncoding = "UTF-8"%>
 <%@ page import="th.ac.kku.*,java.util.ArrayList" %>
-
 <%
     // Check if the user is already logged in
     User loggedInUser = (User) session.getAttribute("loggedInUser");
@@ -11,7 +10,6 @@
     } else {
         // If the user is not logged in, display the login form
 %>
-
 <!DOCTYPE html>
 <html>
 
@@ -162,13 +160,7 @@
       </div>
     </div>
   </section>
-
-
-
-
-
 </body>
-
 </html>
 
 <%
