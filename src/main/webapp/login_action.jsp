@@ -8,6 +8,9 @@
     User user = userDAO.login(email, password);
 
     if (user != null) {
+        // Log the user that has logged in
+        System.out.println("User logged in: " + user);
+    
         // Start a session and set necessary attributes
         session.setAttribute("loggedInUser", user);
         response.sendRedirect("homepage.jsp"); // Redirect to the homepage after successful login

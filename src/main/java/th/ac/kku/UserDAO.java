@@ -104,7 +104,6 @@ public class UserDAO {
         pStatement.executeUpdate();
     }
 
-    // Login method
     public User login(String email, String password) {
         try {
             PreparedStatement pStatement = connection.prepareStatement("SELECT * FROM users WHERE email = ?");
@@ -115,16 +114,33 @@ public class UserDAO {
                 // Verify password here
                 String storedPassword = resultSet.getString("password");
                 if (!storedPassword.equals(password)) {
+                    System.out.println("Passwords don't match");
                     return null; // Passwords don't match
                 }
 
-                // Populate the user object
+                // Populate the user object with data from the result set
                 User user = new User();
                 user.setID(resultSet.getInt("id"));
+                user.setCitizenID(resultSet.getString("citizen_id"));
+                user.setFirstname(resultSet.getString("firstname"));
+                user.setLastname(resultSet.getString("lastname"));
+                user.setGender(resultSet.getInt("gender"));
+                user.setBirthDate(resultSet.getDate("birth_date"));
+                user.setAddress(resultSet.getString("address"));
+                user.setMobile(resultSet.getString("mobile"));
+                user.setEmail(resultSet.getString("email"));
+                user.setAllergic(resultSet.getString("allergic"));
+                user.setBlood_group(resultSet.getString("blood_group"));
+                user.setWeight(resultSet.getDouble("weight"));
+                user.setHeight(resultSet.getDouble("height"));
+                user.setChronic_disease(resultSet.getString("chronic_disease"));
                 // Set other user properties
+
+                System.out.println("User found: " + user); // Log the user object
 
                 return user;
             } else {
+                System.out.println("No matching user found");
                 return null; // No matching user found
             }
         } catch (SQLException e) {

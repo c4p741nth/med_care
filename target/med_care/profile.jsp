@@ -1,4 +1,5 @@
 <%@ page import="th.ac.kku.*" %>
+<%@ page import="th.ac.kku.User" %>
 <!DOCTYPE html>
 <html>
 <head>
