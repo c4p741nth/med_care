@@ -83,24 +83,23 @@ public class UserDAO {
 
     // Register a new member
     public void registerUser(User user) throws SQLException {
-        PreparedStatement pStatement = connection
-                .prepareStatement("INSERT INTO users VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
-        pStatement.setInt(1, user.getID());
-        pStatement.setString(2, user.getCitizenID());
-        pStatement.setString(3, user.getFirstname());
-        pStatement.setString(4, user.getLastname());
-        pStatement.setInt(5, user.getGender());
-        pStatement.setDate(6, user.getBirthDate());
-        pStatement.setString(7, user.getAddress());
-        pStatement.setString(8, user.getMobile());
-        pStatement.setString(9, user.getEmail());
-        pStatement.setString(10, user.getPassword());
-        pStatement.setString(11, user.getAllergic());
-        pStatement.setString(12, user.getBlood_group());
-        pStatement.setDouble(13, user.getWeight());
-        pStatement.setDouble(14, user.getHeight());
-        pStatement.setString(15, user.getChronic_disease());
-        pStatement.setInt(16, user.getAccessLevel());
+        PreparedStatement pStatement = connection.prepareStatement(
+                "INSERT INTO users (citizen_id, firstname, lastname, gender, birth_date, address, mobile, email, password, allergic, blood_group, weight, height, chronic_disease, accessLevel) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+        pStatement.setString(1, user.getCitizenID());
+        pStatement.setString(2, user.getFirstname());
+        pStatement.setString(3, user.getLastname());
+        pStatement.setInt(4, user.getGender());
+        pStatement.setDate(5, user.getBirthDate());
+        pStatement.setString(6, user.getAddress());
+        pStatement.setString(7, user.getMobile());
+        pStatement.setString(8, user.getEmail());
+        pStatement.setString(9, user.getPassword());
+        pStatement.setString(10, user.getAllergic());
+        pStatement.setString(11, user.getBlood_group());
+        pStatement.setDouble(12, user.getWeight());
+        pStatement.setDouble(13, user.getHeight());
+        pStatement.setString(14, user.getChronic_disease());
+        pStatement.setInt(15, user.getAccessLevel());
         pStatement.executeUpdate();
     }
 

@@ -2,8 +2,8 @@
 <%@ page import="th.ac.kku.User, th.ac.kku.UserDAO" %>
 
 <%
+    request.setCharacterEncoding("UTF-8");
     // Retrieve form data
-    String id = request.getParameter("id");
     String citizenId = request.getParameter("citizen_id");
     String firstname = request.getParameter("firstname");
     String lastname = request.getParameter("lastname");

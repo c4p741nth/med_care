@@ -112,8 +112,6 @@ pageEncoding="UTF-8"%> <%@ page import="th.ac.kku.*,java.util.ArrayList" %>
         <p>Please fill in this form to create an account.</p>
         <hr />
 
-        <input type="hidden" name="id" value="" />
-
         <label for="citizen_id"><b>Citizen ID</b></label>
         <input
           type="text"

@@ -18,7 +18,7 @@ public class Migrate {
             Statement statement = connection.createStatement();
 
             String createTableSQL = "CREATE TABLE users (" +
-                    "id SERIAL PRIMARY KEY," +
+                    "id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY," +
                     "citizen_id VARCHAR(13) NOT NULL," +
                     "firstname VARCHAR(50) NOT NULL," +
                     "lastname VARCHAR(50) NOT NULL," +
