@@ -41,8 +41,6 @@ public class UserDAO {
             user.setHeight(resultSet.getDouble("height"));
             user.setChronic_disease(resultSet.getString("chronic_disease"));
 
-            user.setAccessLevel(resultSet.getInt("access_level"));
-
             userList.add(user);
         }
         return userList;
@@ -73,8 +71,6 @@ public class UserDAO {
             user.setHeight(resultSet.getDouble("height"));
             user.setChronic_disease(resultSet.getString("chronic_disease"));
 
-            user.setAccessLevel(resultSet.getInt("access_level"));
-
             return user;
         } else {
             return null;
@@ -84,7 +80,7 @@ public class UserDAO {
     // Register a new member
     public void registerUser(User user) throws SQLException {
         PreparedStatement pStatement = connection.prepareStatement(
-                "INSERT INTO users (citizen_id, firstname, lastname, gender, birth_date, address, mobile, email, password, allergic, blood_group, weight, height, chronic_disease, accessLevel) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+                "INSERT INTO users (citizen_id, firstname, lastname, gender, birth_date, address, mobile, email, password, allergic, blood_group, weight, height, chronic_disease) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
         pStatement.setString(1, user.getCitizenID());
         pStatement.setString(2, user.getFirstname());
         pStatement.setString(3, user.getLastname());
@@ -99,7 +95,6 @@ public class UserDAO {
         pStatement.setDouble(12, user.getWeight());
         pStatement.setDouble(13, user.getHeight());
         pStatement.setString(14, user.getChronic_disease());
-        pStatement.setInt(15, user.getAccessLevel());
         pStatement.executeUpdate();
     }
 
@@ -128,12 +123,12 @@ public class UserDAO {
                 user.setAddress(resultSet.getString("address"));
                 user.setMobile(resultSet.getString("mobile"));
                 user.setEmail(resultSet.getString("email"));
+                user.setPassword(resultSet.getString("password"));
                 user.setAllergic(resultSet.getString("allergic"));
                 user.setBlood_group(resultSet.getString("blood_group"));
                 user.setWeight(resultSet.getDouble("weight"));
                 user.setHeight(resultSet.getDouble("height"));
                 user.setChronic_disease(resultSet.getString("chronic_disease"));
-                // Set other user properties
 
                 System.out.println("User found: " + user); // Log the user object
 
@@ -150,54 +145,30 @@ public class UserDAO {
         }
     }
 
-    public void editUserProfile(int accessLevel, int id, User updatedUser) throws SQLException {
-        // Check if the user with the given ID exists
-        User existingUser = getUser(String.valueOf(id));
+    public void editUserProfile(User updatedUser) throws SQLException {
+        // Check if the admin's access level is sufficient to edit this user's profile
+        String sqlQuery;
+        // Admin with access level 1 can edit all user profile fields
+        sqlQuery = "UPDATE users SET citizen_id=?, firstname=?, lastname=?, gender=?, birth_date=?, address=?, mobile=?, email=?, allergic=?, blood_group=?, weight=?, height=?, chronic_disease=? WHERE id=?";
 
-        if (existingUser != null) {
-            // Check if the admin's access level is sufficient to edit this user's profile
-            if (accessLevel >= existingUser.getAccessLevel()) {
-                // Define the SQL query based on the user's access level
-                String sqlQuery;
+        // Prepare and execute the SQL update query
+        PreparedStatement pStatement = connection.prepareStatement(sqlQuery);
+        pStatement.setString(1, updatedUser.getCitizenID());
+        pStatement.setString(2, updatedUser.getFirstname());
+        pStatement.setString(3, updatedUser.getLastname());
+        pStatement.setInt(4, updatedUser.getGender());
+        pStatement.setDate(5, updatedUser.getBirthDate());
+        pStatement.setString(6, updatedUser.getAddress());
+        pStatement.setString(7, updatedUser.getMobile());
+        pStatement.setString(8, updatedUser.getEmail());
+        pStatement.setString(9, updatedUser.getAllergic());
+        pStatement.setString(10, updatedUser.getBlood_group());
+        pStatement.setDouble(11, updatedUser.getWeight());
+        pStatement.setDouble(12, updatedUser.getHeight());
+        pStatement.setString(13, updatedUser.getChronic_disease());
+        pStatement.setInt(14, updatedUser.getID());
 
-                if (accessLevel == 1) {
-                    // Admin with access level 1 can edit all user profile fields
-                    sqlQuery = "UPDATE users SET citizen_id=?, firstname=?, lastname=?, gender=?, birthdate=?, address=?, mobile=?, email=?, password=?, allergic=?, blood_group=?, weight=?, height=?, chronic_disease=?, access_level=? WHERE id=?";
-                } else if (accessLevel == 0) {
-                    // Admin with access level 0 can only edit specific fields
-                    sqlQuery = "UPDATE users SET address=?, mobile=?, email=?, password=?, allergic=?, blood_group=?, weight=?, height=?, chronic_disease=? WHERE id=?";
-                } else {
-                    // Handle other access levels as needed
-                    // You can define custom logic for other access levels
-                    throw new SQLException("Invalid access level.");
-                }
-
-                // Prepare and execute the SQL update query
-                PreparedStatement pStatement = connection.prepareStatement(sqlQuery);
-                pStatement.setString(1, updatedUser.getCitizenID());
-                pStatement.setString(2, updatedUser.getFirstname());
-                pStatement.setString(3, updatedUser.getLastname());
-                pStatement.setInt(4, updatedUser.getGender());
-                pStatement.setDate(5, updatedUser.getBirthDate());
-                pStatement.setString(6, updatedUser.getAddress());
-                pStatement.setString(7, updatedUser.getMobile());
-                pStatement.setString(8, updatedUser.getEmail());
-                pStatement.setString(9, updatedUser.getPassword());
-                pStatement.setString(10, updatedUser.getAllergic());
-                pStatement.setString(11, updatedUser.getBlood_group());
-                pStatement.setDouble(12, updatedUser.getWeight());
-                pStatement.setDouble(13, updatedUser.getHeight());
-                pStatement.setString(14, updatedUser.getChronic_disease());
-                pStatement.setInt(15, updatedUser.getAccessLevel());
-                pStatement.setInt(16, id);
-
-                pStatement.executeUpdate();
-            } else {
-                throw new SQLException("Insufficient access level to edit user profile.");
-            }
-        } else {
-            throw new SQLException("User with ID " + id + " does not exist.");
-        }
+        pStatement.executeUpdate();
     }
 
     // Delete user

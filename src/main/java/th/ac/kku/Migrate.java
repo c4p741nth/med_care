@@ -33,7 +33,6 @@ public class Migrate {
                     "weight DOUBLE PRECISION," +
                     "height DOUBLE PRECISION," +
                     "chronic_disease VARCHAR(255)," +
-                    "accessLevel INT" +
                     ")";
 
             statement.executeUpdate(createTableSQL);

@@ -105,7 +105,7 @@
     <a class="center-label2" href="homepage.jsp">
           Back
       </a>
-    <a class="center-label2" href="homepage.jsp">
+    <a class="center-label2" href="edit_profile.jsp">
         Edit
     </a>
     <%

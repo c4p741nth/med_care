@@ -21,9 +21,6 @@ public class User {
     private double height;
     private String chronic_disease;
 
-    // Access level
-    private int accessLevel;
-
     public int getID() {
         return id;
     }
@@ -142,13 +139,5 @@ public class User {
 
     public void setChronic_disease(String chronic_disease) {
         this.chronic_disease = chronic_disease;
-    }
-
-    public int getAccessLevel() {
-        return accessLevel;
-    }
-
-    public void setAccessLevel(int accessLevel) {
-        this.accessLevel = accessLevel;
     }
 }
