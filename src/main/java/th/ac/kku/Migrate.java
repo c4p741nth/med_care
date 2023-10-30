@@ -32,7 +32,7 @@ public class Migrate {
                     "blood_group VARCHAR(2)," +
                     "weight DOUBLE PRECISION," +
                     "height DOUBLE PRECISION," +
-                    "chronic_disease VARCHAR(255)," +
+                    "chronic_disease VARCHAR(255)" +
                     ")";
 
             statement.executeUpdate(createTableSQL);
