@@ -15,7 +15,6 @@
     String email = request.getParameter("email");
     String password = request.getParameter("password");
     String confirmPassword = request.getParameter("password_confirm");
-    int accessLevel = Integer.parseInt(request.getParameter("accessLevel"));
 
     // Check if the password and confirm password match
     if (!password.equals(confirmPassword)) {
@@ -38,7 +37,6 @@
         user.setWeight(0.0);
         user.setHeight(0.0);
         user.setChronic_disease("");
-        user.setAccessLevel(accessLevel);
 
         // Initialize UserDAO and register the user
         try {

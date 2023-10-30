@@ -175,8 +175,6 @@ pageEncoding="UTF-8"%> <%@ page import="th.ac.kku.*,java.util.ArrayList" %>
           required
         />
 
-        <input type="hidden" name="accessLevel" value="1" />
-
         <div class="clearfix">
           <a href="index.jsp">
             <button type="button" class="cancelbtn">Cancel</button>
